@@ -89,3 +89,16 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int
+sys_count_num_of_digits(void)
+{
+    int num=myproc()->tf->ecx;
+    int count=0;
+    while(num != 0)
+    {
+        count++;
+        num /= 10;
+    }
+    return count;
+}
